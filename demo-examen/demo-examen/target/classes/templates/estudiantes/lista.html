@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Lista de Estudiantes</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+  <h2>Lista de Estudiantes</h2>
+  <a href="/estudiantes/nuevo" class="btn btn-primary mb-3">Nuevo Estudiante</a>
+  <table class="table table-bordered">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Edad</th>
+      <th>Email</th>
+      <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="estudiante : ${estudiantes}">
+      <td th:text="${estudiante.id}"></td>
+      <td th:text="${estudiante.nombre}"></td>
+      <td th:text="${estudiante.apellido}"></td>
+      <td th:text="${estudiante.edad}"></td>
+      <td th:text="${estudiante.email}"></td>
+      <td>
+        <a th:href="@{/estudiantes/editar/{id}(id=${estudiante.id})}" class="btn btn-warning btn-sm">Editar</a>
+        <a th:href="@{/estudiantes/eliminar/{id}(id=${estudiante.id})}" class="btn btn-danger btn-sm">Eliminar</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>
